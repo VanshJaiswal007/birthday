@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image'; // Import the Image component
 
 export default function Home() {
   const [memoryImages] = useState([
@@ -67,10 +68,12 @@ export default function Home() {
       <div style={{ margin: '20px', padding: '20px', borderRadius: '15px', backgroundColor: '#ffe6f2' }}>
         <h2 style={{ fontFamily: 'Pacifico, cursive', color: '#ff4d94' }}>Your Favorite Song</h2>
         <div style={{ margin: '10px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <img 
+          <Image 
             src="/alone.jpg"
             alt="Alone - Alan Walker"
-            style={{ width: '100px', borderRadius: '10px', cursor: 'pointer', transition: 'transform 0.3s' }}
+            width={100} // Set image width
+            height={100} // Set image height
+            style={{ borderRadius: '10px', cursor: 'pointer', transition: 'transform 0.3s' }}
             onClick={playSong}
           />
           <p>Alone - Alan Walker</p>
@@ -86,17 +89,18 @@ export default function Home() {
         
         {/* Cute Love Message Above Memories */}
         <p style={{ color: '#ff4d94', fontSize: '1.2em', marginBottom: '20px' }}>
-          "Every moment with you is a beautiful memory! 💖"
+          &quot;Every moment with you is a beautiful memory! 💖&quot; {/* Escaped quotes */}
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
           {displayedImages.map((memory) => (
             <div key={memory.id} style={{ margin: '10px', textAlign: 'center' }}>
-              <img
+              <Image
                 src={memory.src}
                 alt={memory.alt}
+                width={200} // Set image width
+                height={200} // Set image height
                 style={{
-                  width: '200px',
                   borderRadius: '10px',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
                   border: '3px solid #ff4d94',
@@ -154,13 +158,12 @@ export default function Home() {
   );
 }
 
-// Button styles
 const buttonStyle = {
-  padding: '10px 20px',
-  border: 'none',
-  borderRadius: '15px',
   backgroundColor: '#ff69b4',
   color: 'white',
+  padding: '10px 20px',
+  border: 'none',
+  borderRadius: '5px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
   margin: '10px',
@@ -169,6 +172,7 @@ const buttonStyle = {
 buttonStyle[':hover'] = {
   backgroundColor: '#ff4d94',
 };
+
 
 
 
